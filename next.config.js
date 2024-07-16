@@ -5,6 +5,11 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  images: {
+    domains: ["imgs.search.brave.com", "utfs.io"],
+  },
+  eslint: {},
+};
 
 export default config;
