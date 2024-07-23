@@ -17,25 +17,27 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { NavigationMenuLink } from "@/components/ui/navigation-menu";
+import { toast } from "sonner";
 
 export function UserMenu({ children }) {
   return (
     <Popover>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent>
-        <div>
-          <Button
-            variant="ghost"
-            onClick={async () => {
-              const supabase = createClient();
-              await supabase.auth.signOut();
-              redirect("/", RedirectType.INTERNAL);
-            }}
-          >
-            <LogOut className="mr-2 h-4 w-4" />
+        <NavigationMenuLink
+          href="/"
+          onClick={async () => {
+            const supabase = createClient();
+            await supabase.auth.signOut();
+            toast("Signed out successfully");
+          }}
+        >
+          <Button variant="outline" className="flex items-center gap-2">
+            <LogOut className="mr-2 h-4 w-4" /> {/* Icon */}
             Sign out
           </Button>
-        </div>
+        </NavigationMenuLink>
       </PopoverContent>
     </Popover>
   );

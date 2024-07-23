@@ -58,6 +58,7 @@ const config = {
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/require-await": "off",
   },
 };
 module.exports = config;

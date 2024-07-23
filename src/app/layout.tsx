@@ -17,50 +17,34 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 
 import { LinkIcon } from "lucide-react";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "./mode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { createClient } from "@/utils/supabase/server";
-import { Button } from "@/components/ui/button";
 import { UserMenu } from "./user-menu";
-import { redirect } from "next/navigation";
 import HiddenSignIn from "./hidden-signin";
 
-// export const metadata = {
-//   title: "Jacob",
-//   description: "@JaFu.py",
-//   icons: [{ rel: "icon", url: "/favicon.ico" }],
-//   openGraph: {
-//     type: "website",
-//     locale: "en_US",
-//     url: "https://jafu.py",
-//     site_name: "JaFu.py",
-//     title: "JaFu.py",
-//     description: "A random person on the internet",
-//     images: [
-//       {
-//         url: "https://jafu.py/og.png",
-//         width: 1200,
-//         height: 630,
-//         alt: "JaFu.py",
-//       },
-//     ],
-//     site_name: "JaFu.py",
-//   },
-// };
+export const generateMetadata = () => {
+  return {
+    title: "Jacob",
+    description: "@JaFu.py",
+    icons: [{ rel: "icon", url: "/favicon.png" }],
+    openGraph: {
+      type: "website",
+      locale: "en_UK",
+      url: "https://jafu.py",
+      site_name: "JaFu.py",
+      title: "JaFu.py",
+      description: "A random person on the internet",
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+      site_name: "JaFu.py",
+    },
+  };
+};
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const supabase = createClient();
   const isAdmin = !!(await supabase.auth.getUser()).data.user;
   //
@@ -74,12 +58,11 @@ export default async function RootLayout({
         |
         | NAV MENU
         */}
-          <NavigationMenu className="fixed top-4 z-50 w-full list-none px-4">
+          <NavigationMenu className="fixed  z-50 w-full list-none bg-white/20 p-4 backdrop-blur-md dark:bg-black/20">
             <NavigationMenuList className="">
-              {/* JaFu.py section */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger>JaFu.py</NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="left-0">
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
@@ -92,12 +75,8 @@ export default async function RootLayout({
                             src="https://avatars.githubusercontent.com/u/104758482?v=4"
                             alt="jafu.py logo"
                           />
-                          <h3 className="mb-2 mt-4 text-lg font-medium">
-                            Jacob
-                          </h3>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            A random person on the internet
-                          </p>
+                          <h3 className="mb-2 mt-4 text-lg font-medium">Jacob</h3>
+                          <p className="text-sm leading-tight text-muted-foreground">A random person on the internet</p>
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -110,10 +89,10 @@ export default async function RootLayout({
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              {/* Blog section */}
+
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Blog</NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="left-0">
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
@@ -121,26 +100,19 @@ export default async function RootLayout({
                           className="flex h-full w-full select-none flex-col justify-start rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                           href="/blog"
                         >
-                          <p class="mb-0 text-xs leading-tight text-muted-foreground">
-                            DD/MMM/YYYY
-                          </p>
-                          <h3 className="mb-2 mt-2 text-lg font-medium">
-                            Latest Post
-                          </h3>
+                          <p class="mb-0 text-xs leading-tight text-muted-foreground">DD/MMM/YYYY</p>
+                          <h3 className="mb-2 mt-2 text-lg font-medium">Latest Post</h3>
                           <p className="text-sm leading-tight text-muted-foreground">
-                            This would be the latest post, but there aren&apos;t
-                            any yet.
+                            This would be the latest post, but there aren&apos;t any yet.
                           </p>
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <ListItem href="/blog" title="2nd latest post">
-                      This would be the second latest post, but there
-                      aren&apos;t any
+                      This would be the second latest post, but there aren&apos;t any
                     </ListItem>
                     <ListItem href="/blog" title="3rd latest post">
-                      This would be the third latest post, but there aren&apos;t
-                      any
+                      This would be the third latest post, but there aren&apos;t any
                     </ListItem>
                     <ListItem href="/blog" title="All posts">
                       View all posts.
@@ -150,7 +122,7 @@ export default async function RootLayout({
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>jaf//UI</NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className="left-0">
                   <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3">
                       <NavigationMenuLink asChild>
@@ -166,9 +138,7 @@ export default async function RootLayout({
                             height={100}
                           />
 
-                          <h3 className="mb-2 mt-2 text-lg font-medium">
-                            Jaf//ui
-                          </h3>
+                          <h3 className="mb-2 mt-2 text-lg font-medium">Jaf//ui</h3>
                           <p className="text-sm leading-tight text-muted-foreground">
                             A collection of UI components built with shadcn-ui.
                             <span className="mt-2 flex items-center text-xs leading-tight text-muted-foreground">
@@ -192,29 +162,21 @@ export default async function RootLayout({
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="https://github.com/jafupy" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    GitHub
-                  </NavigationMenuLink>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>GitHub</NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
             {isAdmin && (
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="ml-auto">
-                    Admin
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="ml-auto">
-                    <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  <NavigationMenuTrigger className="ml-auto">Admin</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className=" grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <div className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md">
-                            <h3 className="mb-2 mt-4 text-lg font-medium">
-                              Admin
-                            </h3>
-                            <p className="text-sm leading-tight text-muted-foreground">
-                              All the managy stuff
-                            </p>
+                            <h3 className="mb-2 mt-4 text-lg font-medium">Admin</h3>
+                            <p className="text-sm leading-tight text-muted-foreground">All the managy stuff</p>
                           </div>
                         </NavigationMenuLink>
                       </li>
@@ -236,10 +198,7 @@ export default async function RootLayout({
             {isAdmin ? (
               <UserMenu>
                 <Avatar className="ml-4 h-8 w-8">
-                  <AvatarImage
-                    src="https://avatars.githubusercontent.com/u/104758482?v=4"
-                    alt="@JaFu.py"
-                  />
+                  <AvatarImage src="https://avatars.githubusercontent.com/u/104758482?v=4" alt="@JaFu.py" />
                   <AvatarFallback>JF</AvatarFallback>
                 </Avatar>
               </UserMenu>
@@ -265,14 +224,12 @@ function ListItem({ title, children, ...props }, ref) {
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
         </a>
       </NavigationMenuLink>
     </li>
