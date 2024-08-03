@@ -1,6 +1,5 @@
 "use server";
 
-import CodeBlock from "@/components/jaf-ui/code";
 import { createServerClient } from "@/utils/supabase/server";
 
 import { MDXRemote } from "next-mdx-remote";
@@ -19,8 +18,6 @@ export default async function Page({ params }: { params: { year: string; month: 
     <article>
       <h1>{data?.title}</h1>
       <MDXRemote source={data.body} />
-      {/* <CodeBlock code={router} language="json" /> */}
-      {/* <CodeBlock code={JSON.stringify({ data, params, error }, null, 2)} language="json" /> */}
     </article>
   );
 }
