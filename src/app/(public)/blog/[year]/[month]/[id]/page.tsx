@@ -14,7 +14,7 @@ export default async function Page({ params }: { params: { year: string; month: 
   }
   const data = _data[0];
   if (error) {
-    toast.error(error.message);
+    toast.error(error);
     throw error;
   }
 
