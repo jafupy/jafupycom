@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function BioPage() {
   return (
-    <div className="max-w-[85ch] ">
+    <div className="max-w-ch-lg">
       <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
@@ -16,26 +16,20 @@ export default function BioPage() {
           }}
         />
       </div>
-      <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl">
-        Bio
-      </h1>
-      <p className="text-lg text-slate-700 dark:text-slate-300">
-        Who is Jacob?
-      </p>
+      <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-6xl">Bio</h1>
+      <p className="text-lg text-slate-700 dark:text-slate-300">Who is Jacob?</p>
 
       <hr className="my-8 text-[#65adda]" />
 
       <p>
         Hello! I&apos;m Jacob, a {calculateAge("12-01-2010")}yr old nerd. <br />
-        I&apos;m into web dev and classical/fingerstyle guitar. I&apos;m
-        currently in secondary school (I live in the UK). <br />
-        <br />I got into coding when I wanted to make a Discord bot with Python.
-        That led me to JavaScript, where I started building stuff with vanilla
-        HTML, CSS, and JS. <br />
+        I&apos;m into web dev and classical/fingerstyle guitar. I&apos;m currently in secondary school (I live in the
+        UK). <br />
+        <br />I got into coding when I wanted to make a Discord bot with Python. That led me to JavaScript, where I
+        started building stuff with vanilla HTML, CSS, and JS. <br />
         <br />
-        After that, I learnt Svelte and SvelteKit, in which i redid my website.
-        Now, I&apos;m learning Next.js and React to make this website, which is
-        written with next.
+        After that, I learnt Svelte and SvelteKit, in which i redid my website. Now, I&apos;m learning Next.js and React
+        to make this website, which is written with next.
       </p>
       <hr className="my-8 bg-[#65adda]" />
       <p className="mb-2">I use</p>

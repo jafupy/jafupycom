@@ -1,0 +1,17 @@
+import InfoCard from "./info-card";
+
+# Mango
+
+Mango is a typesafe, multiparadigm programming language that is designed to be easy to use and understand. It is statically typed and has a strong type system.
+
+## Syntax
+
+### Variables
+
+In Mango, variables are declared using the `var` keyword. By default, variables are immutable. To make a variable mutable, you can use the `mut` keyword. Constants are a type of variable that is immutable and cannot be changed once it is declared. Constants are declared using the `const` keyword. Variables, mutable and immutable, can be <InfoCard card="shadowing">shadowed</InfoCard>.
+
+```mango
+var x = 10
+var mut y int = 20
+const z = 12
+```

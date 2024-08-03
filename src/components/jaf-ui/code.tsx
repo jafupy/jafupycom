@@ -1,124 +1,86 @@
-import React, { PureComponent } from "react";
-import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import { normalizeLanguage } from "../utils/normalizeLanguage";
+"use server";
+import { CopyToClipboard } from "@/components/jaf-ui/copy-clipboard";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { shiki } from "@/utils/shiki";
 
-export interface CodeProps {
-  codeStyle?: object;
-  /** The element or custom react component to use in place of the default code tag */
-  codeTagProps?: object;
-  /** The language in which the code is written. [See LANGUAGES.md](https://github.com/rajinwonderland/react-code-blocks/blob/master/LANGUAGES.md) */
-  language: string;
-  /** The style object that will be combined with the top level style on the pre tag, styles here will overwrite earlier styles. */
-  customStyle?: Record<string, string>;
+const colToClass = {
+  "__shade": 300,
+  "#5DE4C7": `text-emerald-300`,
+  "#5DE4C7C0": "text-emerald-300/75",
+  "#A6ACCD": "text-purple-300",
+  "#ADD7FF": "text-blue-300",
+  "#EFF0FB": "text-slate-300",
+  "#EFF0FBD0": "text-slate-300/75",
+  "#91B4D5": "text-purple-300/75",
+  "#767C9DB0": "text-slate-300/50",
+};
 
-  /** The style object to apply to the container that shows line number */
-  lineNumberContainerStyle?: object;
+export default async function CodeBlock({ children, file, language, lineNos = true, linePrefix, copy = true }) {
+  const { tokens } = shiki.codeToTokens(children, {
+    lang: language,
+    theme: "poimandres",
+    transformers: [
+      {
+        pre(node) {
+          this.addClassToHast(node, "p-4 rounded-lg");
+        },
+        line(node, line) {
+          node.properties["data-line"] = line;
+        },
+        span(node, line, col) {
+          const hex = node.properties.style.replace("color:", "");
+          this.addClassToHast(node, colToClass[hex]);
 
-  /** The element or custom react component to use in place of the default span tag */
-  preTag?: keyof JSX.IntrinsicElements | React.ComponentType<any> | undefined;
-  /** Indicates whether or not to show line numbers */
-  showLineNumbers?: boolean;
-  /**For choosing starting line**/
-  startingLineNumber?: number;
-  /** The code to be formatted */
-  text: string;
-
-  /** If true, wrap long lines */
-  wrapLongLines?: boolean;
-
-  /**
-   * Lines to highlight comma delimited.
-   * Example uses:
-
-   * - To highlight one line `highlight="3"`
-   * - To highlight a group of lines `highlight="1-5"`
-   * - To highlight multiple groups `highlight="1-5,7,10,15-20"`
-   */
-  highlight?: string;
-}
-
-export default class Code extends PureComponent<CodeProps, object> {
-  _isMounted = false;
-  static defaultProps = {
-    showLineNumbers: false,
-    wrapLongLines: false,
-    startingLineNumber: 1,
-    lineNumberContainerStyle: {},
-    codeTagProps: {},
-    preTag: "span",
-    highlight: "",
-    customStyle: {},
-  };
-  componentDidMount() {
-    this._isMounted = true;
-  }
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
-  getLineOpacity(lineNumber: number) {
-    if (!this.props.highlight) {
-      return 1;
-    }
-
-    const highlight = this.props.highlight
-      .split(",")
-      .map((num) => {
-        if (num.indexOf("-") > 0) {
-          // We found a line group, e.g. 1-3
-          const [from, to] = num.split("-").map(Number).sort();
-          return Array(to + 1)
-            .fill(undefined)
-            .map((_, index) => index)
-            .slice(from, to + 1);
-        }
-
-        return Number(num);
-      })
-      .reduce<number[]>((acc, val) => acc.concat(val), []);
-
-    if (highlight.length === 0) {
-      return 1;
-    }
-
-    if (highlight.includes(lineNumber)) {
-      return 1;
-    }
-
-    return 0.3;
-  }
-
-  render() {
-    const { inlineCodeStyle } = applyTheme(this.props.theme);
-    const language = normalizeLanguage(this.props.language);
-
-    const props = {
-      language,
-      PreTag: this.props.preTag,
-      style: this.props.codeStyle ?? inlineCodeStyle,
-      showLineNumbers: this.props.showLineNumbers,
-      startingLineNumber: this.props.startingLineNumber,
-      codeTagProps: this.props.codeTagProps,
-      wrapLongLines: this.props.wrapLongLines,
-    };
-
-    return (
-      <SyntaxHighlighter
-        {...props}
-        // Wrap lines is needed to set styles on the line.
-        // We use this to set opacity if highlight specific lines.
-        wrapLines={!!this.props.highlight}
-        // Types are incorrect.
-        // @ts-expect-error abc
-        lineProps={(lineNumber) => ({
-          style: {
-            opacity: this.getLineOpacity(lineNumber),
-            ...this.props.lineNumberContainerStyle,
-          },
-        })}
-      >
-        {this.props.text}
-      </SyntaxHighlighter>
-    );
-  }
+          node.properties.style = null;
+          node.properties["data-token"] = `token:${line}:${col}`;
+        },
+      },
+    ],
+  });
+  return (
+    <div className="relative max-w-ch-md ">
+      <pre class="relative mb-4 mt-6 overflow-visible rounded-lg border bg-slate-950 py-4 text-slate-200 dark:bg-slate-900">
+        {copy && (
+          <CopyToClipboard
+            value={children}
+            className="absolute -top-1 right-0 translate-y-[-100%] text-muted-foreground"
+            buttonProps={{
+              size: "sm",
+              variant: "outline",
+            }}
+          />
+        )}
+        <span className="col-span-2 flex px-4 text-muted-foreground">
+          <span className="">{file}</span>
+          <span className="ml-auto ">{language}</span>
+        </span>
+        <code
+          class="grid max-h-[650px] rounded p-4 font-mono text-sm"
+          style={{
+            gridTemplateColumns:
+              lineNos || linePrefix
+                ? `${Math.floor(tokens.length / 10) !== 0 ? Math.floor(tokens.length / 10) + 1 : 2}ch auto`
+                : `auto`,
+          }}
+        >
+          {tokens.map((line, lineNo) => (
+            <>
+              <span className="select-none text-slate-200/50" key={lineNo + 354}>
+                {linePrefix ? linePrefix : lineNo + 1}
+                {/* {lineNo + 1} */}
+              </span>
+              <span>
+                {line.map(token => (
+                  <span className={cn(colToClass[token.color], token.color)} key={token.offset}>
+                    {token.content}
+                  </span>
+                ))}
+              </span>
+            </>
+          ))}
+        </code>
+      </pre>
+    </div>
+  );
 }

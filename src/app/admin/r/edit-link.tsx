@@ -7,14 +7,20 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { DialogClose, DialogFooter } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { ArrowUpDown, Check } from "lucide-react";
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
-import { cn } from "@/lib/utils";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import Link from "next/link";
+
+import { Pencil } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 const formSchema = z.object({
   shortcut: z.string().min(2),
@@ -23,150 +29,127 @@ const formSchema = z.object({
   title: z.string().min(2),
   description: z.string().min(2),
   // -----
-  tags: z.array(z.string().min(2)).optional(),
+  tags: z.array(z.string().min(0)).optional(),
 });
-
-const languages = [
-  { label: "English", value: "en" },
-  { label: "French", value: "fr" },
-  { label: "German", value: "de" },
-  { label: "Spanish", value: "es" },
-  { label: "Portuguese", value: "pt" },
-  { label: "Russian", value: "ru" },
-  { label: "Japanese", value: "ja" },
-  { label: "Korean", value: "ko" },
-  { label: "Chinese", value: "zh" },
-] as const;
 
 export default function ProfileForm({ data }) {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      shortcut: "",
-      destination: "",
-      title: "",
-      description: "",
-      tags: [],
+      shortcut: data.shortcut,
+      destination: data.destination,
+      title: data.title,
+      description: data.description,
+      tags: data.tags,
     },
   });
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast("Submitted edit link", { description: JSON.stringify(values) });
+    const supabase = createClient();
+    const { error } = supabase.from("links").update(values).eq("id", data.id);
+    if (error) {
+      toast.error("Failed to edit link", {
+        description: error.message,
+      });
+    } else {
+      toast.success("Link updated");
+    }
+    fetchData();
   }
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <TabsContent value="params">
-          <FormField
-            control={form.control}
-            name="shortcut"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Shortcut</FormLabel>
-                <FormControl>
-                  <Input placeholder="somewhere" {...field} defaultValue={data.shortcut} />
-                </FormControl>
-                <FormDescription>
-                  The alias for the link. Eg, /r/<strong>somewhere</strong>
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="destination"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Destination</FormLabel>
-                <FormControl>
-                  <Input placeholder="www.somewhere.com" {...field} defaultValue={data.destination} />
-                </FormControl>
-                <FormDescription>Where the link points to.</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <DialogFooter>
-            <TabsList>
-              <TabsTrigger value="meta" asChild>
-                <Button>Next (Metadata)</Button>
-              </TabsTrigger>
-            </TabsList>
-          </DialogFooter>
-        </TabsContent>
-
-        {/* 
-          ███    ███ ███████ ████████  █████  
-          ████  ████ ██         ██    ██   ██ 
-          ██ ████ ██ █████      ██    ███████ 
-          ██  ██  ██ ██         ██    ██   ██ 
-          ██      ██ ███████    ██    ██   ██              
-          */}
-
-        <TabsContent value="meta">
-          <FormField
-            control={form.control}
-            name="shortcut"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input placeholder="Somewhere" {...field} defaultValue={data.title} />
-                </FormControl>
-                <FormDescription>The title of the link.</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="shortcut"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Input placeholder="somewhere" {...field} defaultValue={data.shortcut} />
-                </FormControl>
-                <FormDescription>What is the destination about?</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="tags"
-            render={({ field }) => (
-              <FormItem control={form.control} name="tags">
-                <FormLabel>Tags</FormLabel>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select tags" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="hidden">Hidden</SelectItem>
-                    <SelectItem value="next">Next.js</SelectItem>
-                    <SelectItem value="svelte">Svelte</SelectItem>
-                    <SelectItem value="vue">Vue</SelectItem>
-                    <SelectItem value="angular">Angular</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormDescription>
-                  You can manage email addresses in your <Link href="/examples/forms">email settings</Link>.
-                </FormDescription>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <DialogFooter>
-            <Button type="submit">Save</Button>
-          </DialogFooter>
-        </TabsContent>
-      </form>
-    </Form>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="ghost">
+          <Pencil className="h-4 w-4" />
+        </Button>
+      </DialogTrigger>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <Tabs defaultValue="params" className="">
+            <DialogContent className="">
+              <DialogHeader>
+                <DialogTitle>Edit Link</DialogTitle>
+                <DialogDescription>Edit the link details.</DialogDescription>
+              </DialogHeader>
+              <TabsContent value="params">
+                <FormField
+                  control={form.control}
+                  name="shortcut"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Shortcut</FormLabel>
+                      <FormControl>
+                        <Input placeholder="somewhere" {...field} defaultValue={data.shortcut} />
+                      </FormControl>
+                      <FormDescription>
+                        The alias for the link. Eg, /r/<strong>somewhere</strong>
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="destination"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Destination</FormLabel>
+                      <FormControl>
+                        <Input placeholder="www.somewhere.com" {...field} defaultValue={data.destination} />
+                      </FormControl>
+                      <FormDescription>Where the link points to.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+              <TabsContent value="meta">
+                <FormField
+                  control={form.control}
+                  name="shortcut"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Title</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Somewhere" {...field} defaultValue={data.title} />
+                      </FormControl>
+                      <FormDescription>The title of the link.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="shortcut"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                        <Input placeholder="somewhere" {...field} defaultValue={data.shortcut} />
+                      </FormControl>
+                      <FormDescription>What is the destination about?</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </TabsContent>
+              <DialogFooter className="flex justify-between sm:justify-between">
+                <TabsList>
+                  <TabsTrigger value="params">Parameters</TabsTrigger>
+                  <TabsTrigger value="meta">Metadata</TabsTrigger>
+                </TabsList>
+                <DialogClose asChild>
+                  <Button type="submit" className="ml-auto">
+                    Save
+                  </Button>
+                </DialogClose>
+              </DialogFooter>
+            </DialogContent>
+          </Tabs>
+        </form>
+      </Form>
+    </Dialog>
   );
 }

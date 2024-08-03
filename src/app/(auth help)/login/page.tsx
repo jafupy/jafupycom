@@ -4,24 +4,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { UserCheck2 } from "lucide-react";
 
@@ -46,8 +31,7 @@ export default function LoginPage() {
         toast("Logged in successfully", {
           icon: <UserCheck2 className="h-4 w-4" />,
         }),
-      (err) =>
-        toast("An error occurred while logging in. ", { description: err }),
+      err => toast("An error occurred while logging in. ", { description: err })
     );
   }
 
@@ -67,11 +51,7 @@ export default function LoginPage() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="hi@jafupy.com"
-                      type="email"
-                      {...field}
-                    />
+                    <Input placeholder="hi@jafupy.com" type="email" {...field} />
                   </FormControl>
 
                   <FormMessage />
@@ -85,11 +65,7 @@ export default function LoginPage() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input
-                      placeholder="••••••••••••"
-                      type="password"
-                      {...field}
-                    />
+                    <Input placeholder="••••••••••••" type="password" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

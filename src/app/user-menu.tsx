@@ -12,11 +12,7 @@ import { RedirectType } from "next/navigation";
 // |____/|_| |_|\__,_|\__,_|\___|_| |_|
 //
 import { Button } from "@/components/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { NavigationMenuLink } from "@/components/ui/navigation-menu";
 import { toast } from "sonner";
 

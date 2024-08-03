@@ -76,4 +76,27 @@
   body {
     @apply bg-background text-foreground;
   }
+  article {
+    @apply prose prose-slate max-w-ch-md dark:prose-invert;
+  }
+  code:not(pre > code) {
+    @apply rounded-sm border border-muted-foreground px-1 py-0.5 before:hidden after:hidden;
+  }
+  .shiki {
+    @apply px-0;
+  }
+  .shiki code {
+    @apply flex w-full flex-col px-0;
+  }
+  .shiki .line {
+    counter-increment: lineNumber;
+    @apply my-0 block w-full px-4;
+  }
+  .shiki .line:not(:last-of-type)::before {
+    content: counter(lineNumber);
+    @apply pr-2;
+  }
+  .shiki .line.highlighted {
+    @apply bg-muted/10;
+  }
 }

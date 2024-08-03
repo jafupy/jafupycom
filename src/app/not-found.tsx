@@ -8,8 +8,7 @@ export default function NotFound() {
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
         style={{
-          backgroundImage:
-            "url('https://utfs.io/f/e2272656-022d-4d60-b4d3-a6f3528e5002-2xmey0.png')",
+          backgroundImage: "url('https://utfs.io/f/e2272656-022d-4d60-b4d3-a6f3528e5002-2xmey0.png')",
           backgroundSize: "2rem",
           backgroundRepeat: "repeat",
         }}
@@ -24,12 +23,11 @@ export default function NotFound() {
       </div>
       <div className="flex flex-col items-center justify-center gap-4 px-6 py-16 sm:px-12 sm:py-24 lg:px-8 lg:py-32">
         <h2 className="flex items-center text-center text-2xl font-normal">
-          404 <span className="mx-4 text-5xl font-light opacity-45">|</span> Not
-          Found
+          404 <span className="mx-4 text-5xl font-light opacity-45">|</span> Not Found
         </h2>
-        <p className="max-w-[55ch]">
-          Huh. The robots searched far and wide for your page, but couldn&apos;t
-          find it. It probably doesn&apos;t exist, or it&apos;s somewhere else.
+        <p className="max-w-ch-sm">
+          Huh. The robots searched far and wide for your page, but couldn&apos;t find it. It probably doesn&apos;t
+          exist, or it&apos;s somewhere else.
         </p>
         <Button variant={"outline"} className="mt-4 border-red-500">
           <Link href="/">Return Home</Link>
@@ -38,8 +36,7 @@ export default function NotFound() {
       <div
         className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
         style={{
-          backgroundImage:
-            "url('https://utfs.io/f/e2272656-022d-4d60-b4d3-a6f3528e5002-2xmey0.png')",
+          backgroundImage: "url('https://utfs.io/f/e2272656-022d-4d60-b4d3-a6f3528e5002-2xmey0.png')",
           backgroundSize: "2rem",
           backgroundRepeat: "repeat",
         }}

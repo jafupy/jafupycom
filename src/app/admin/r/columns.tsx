@@ -4,19 +4,10 @@ import { ColumnDef } from "@tanstack/react-table";
 
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Pencil } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 import EditLink from "./edit-link";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { ArrowUpDown } from "lucide-react";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -50,7 +41,14 @@ export const columns: ColumnDef<Link>[] = [
   },
   {
     accessorKey: "shortcut",
-    header: "Shortcut",
+    header: ({ column }) => {
+      return (
+        <Button variant="ghost" onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Shortcut
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "destination",
@@ -83,27 +81,7 @@ export const columns: ColumnDef<Link>[] = [
       row;
       return (
         <div className="flex flex-row gap-2">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="ghost">
-                <Pencil className="h-4 w-4" />
-              </Button>
-              {/* <span className="sr-only">Edit</span> */}
-            </DialogTrigger>
-            <DialogContent className="">
-              <Tabs defaultValue="params" className="">
-                <TabsList className="absolute -left-32 top-1/2 -translate-y-1/2 rotate-90 transform shadow-md">
-                  <TabsTrigger value="params">Parameters</TabsTrigger>
-                  <TabsTrigger value="meta">Metadata</TabsTrigger>
-                </TabsList>
-                <DialogHeader>
-                  <DialogTitle>Edit Link</DialogTitle>
-                  <DialogDescription>Hi</DialogDescription>
-                </DialogHeader>
-                <EditLink data={row.original} />
-              </Tabs>
-            </DialogContent>
-          </Dialog>
+          <EditLink data={row.original} />
         </div>
       );
     },

@@ -1,9 +1,10 @@
+"use server";
 import { redirect } from "next/navigation";
 
-import { createClient } from "@/utils/supabase/server";
+import { createServerClient } from "@/utils/supabase/server";
 
 export default async function AdminLayout({ children }) {
-  const supabase = createClient();
+  const supabase = createServerClient();
 
   const { data, error } = await supabase.auth.getUser();
   if (error ?? !data?.user) {
