@@ -1,7 +1,9 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
   parser: "@typescript-eslint/parser",
-
+  parserOptions: {
+    project: false,
+  },
   plugins: ["@typescript-eslint", "drizzle"],
   extends: [
     "next/core-web-vitals",
