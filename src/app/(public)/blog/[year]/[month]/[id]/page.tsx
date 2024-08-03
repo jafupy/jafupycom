@@ -9,7 +9,10 @@ export default async function Page({ params }: { params: { year: string; month: 
   const supabase = createServerClient();
   const { data: _data, error } = await supabase.from("blog").select("*").eq("slug", params.id);
 
-  const data = _data[0] || {};
+  if (!_data) {
+    return <div>Post not found</div>;
+  }
+  const data = _data[0];
   if (error) {
     toast.error(error.message);
     throw error;
