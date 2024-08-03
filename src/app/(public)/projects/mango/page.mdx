@@ -2,16 +2,117 @@ import InfoCard from "./info-card";
 
 # Mango
 
-Mango is a typesafe, multiparadigm programming language that is designed to be easy to use and understand. It is statically typed and has a strong type system.
+Mango is a typesafe, compiled programming language that is designed to be easy to use and understand. It is statically typed and has a strong type system.
 
-## Syntax
+## Syntax and Semantics
 
 ### Variables
 
 In Mango, variables are declared using the `var` keyword. By default, variables are immutable. To make a variable mutable, you can use the `mut` keyword. Constants are a type of variable that is immutable and cannot be changed once it is declared. Constants are declared using the `const` keyword. Variables, mutable and immutable, can be <InfoCard card="shadowing">shadowed</InfoCard>.
 
 ```mango
-var x = 10
-var mut y int = 20
-const z = 12
+var x = 10 // integer, initialised, immutable
+var mut y int // integer, uninitialised, mutable
+const z = 12 // integer, initialised, constant
 ```
+
+### Data Types
+
+**Integer** - `int`
+
+Any whole number. By default, all integers are int 32. This means they range from -2147483648 to 2147483647. If you need a larger integer, you can pass a type annotation. Integers can be signed or unsigned, and range from int 8 to int 2048.
+
+```mango
+var x int // int 32
+var y int<64>
+```
+
+**Float** - `float`
+
+Any decimal number. Floats are stored as fractions, consisting of two integers, of the same size. Type annotations are supported for fraction that require them. By default floats are 32-bit.
+
+```mango
+var x float = 10.5 // stored as 21/2
+var y float<64> = 10.5 // float 8 to 2048 is supported
+```
+
+**Boolean** - `bool`
+
+A true/false value.
+
+```mango
+var x bool = true
+var y bool = false
+```
+
+**String** - `str`
+
+Basic text.
+
+```mango
+var x str = "Hello, world!"
+```
+
+**Array** - `arr`
+
+A collection of values of the same type. To use an array type for only one type, use your list item type followed by square brackets. To use an array type for multiple types, use the `arr` type.
+
+```mango
+var x int[] = [1, 2, 3, 4, 5]
+var y arr<int, str> = [1, "Hello", 2, "World"]
+var z arr<int> = [1, 2, 3, 4, 5] // Throws a warning // [!code --]
+```
+
+**Table** - `table`
+
+A key-row pair. Tables cannot be implicitly typed. In order to initialise a table, you must pass a type annotation to the type, which is a key-value pair, symbolising the column name and type.
+When accessing a cell, you use dot notation to access a row, and then square brackets to access a column. It returns the value.
+When accessing a row, you use dot notation. returns a `thing`, which is a key value pair where the column is the key and the cell is the value.
+
+```mango
+var x table<greeting str, name str, age int> = {
+    xx: "Hello" "world" 2,
+}
+var y = { 1: "Hello" "World" } // Throws an error // [!code --]
+
+x.xx // Row with the key "xx"
+x["greeting"] // Column "greeting"
+x.xx[greeting] // Column "greeting" of row with the key "xx"
+
+```
+
+**Thing** - `thing`
+
+A key-value pair. To access a value, use the key, via dot notation. Can be implicitly typed. This is similar to a Javascript object, or a Python dictionary.
+
+```mango
+var x thing<str> = {foo: "bar"}
+```
+
+### Operators
+
+Understand the operators supported by Mango and how to use them.
+
+## Control Structures
+
+### Conditionals
+
+Implement conditional statements such as if-else in Mango.
+
+### Loops
+
+Learn about the different looping constructs available in Mango.
+
+## Functions
+
+### Defining Functions
+
+How to define and call functions in Mango.
+
+### Main Function
+
+Discover the main function, its purpose, and how to implement it in Mango.
+
+### Function Arguments
+
+Details on h

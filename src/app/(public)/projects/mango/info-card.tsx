@@ -9,7 +9,7 @@ export default function ShadowingCard({ children, card }: { children: React.Reac
   return (
     <Popover>
       <PopoverTrigger className="cursor-pointer underline underline-offset-4">{children}</PopoverTrigger>
-      <PopoverContent className="prose relative max-h-48 w-full max-w-[60ch] overflow-scroll">
+      <PopoverContent className="prose prose-slate relative max-h-48 w-full max-w-[60ch] overflow-scroll dark:prose-invert">
         <h3>{info.title}</h3>
 
         <p className="mb-4 text-sm text-muted-foreground">{info.subtext}</p>

@@ -93,10 +93,16 @@
     @apply my-0 block w-full px-4;
   }
   .shiki .line:not(:last-of-type)::before {
-    content: counter(lineNumber);
+    /* content: counter(lineNumber); */
     @apply pr-2;
   }
   .shiki .line.highlighted {
     @apply bg-muted/10;
+  }
+  .shiki .line.diff.add {
+    @apply border-l-2 border-emerald-500 bg-emerald-500/20;
+  }
+  .shiki .line.diff.remove {
+    @apply border-l-2 border-red-500 bg-red-500/20;
   }
 }

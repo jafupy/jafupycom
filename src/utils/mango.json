@@ -26,6 +26,9 @@
     },
     {
       "include": "#arithmetic"
+    },
+    {
+      "include": "#booleans"
     }
   ],
   "repository": {
@@ -54,7 +57,7 @@
         },
         {
           "name": "keyword.muted",
-          "match": "\\b(mut)\\b"
+          "match": "\\bmut\\b"
         }
       ]
     },
@@ -62,7 +65,7 @@
       "patterns": [
         {
           "name": "constant.numeric",
-          "match": "\\b[0-9]+\\b"
+          "match": "\\b\\d+\\b"
         }
       ]
     },
@@ -71,12 +74,24 @@
         {
           "name": "string.quoted.double",
           "begin": "\"",
-          "end": "\""
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape",
+              "match": "\\\\."
+            }
+          ]
         },
         {
           "name": "string.quoted.single",
           "begin": "'",
-          "end": "'"
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape",
+              "match": "\\\\."
+            }
+          ]
         }
       ]
     },
@@ -112,7 +127,15 @@
       "patterns": [
         {
           "name": "expression.arithmetic",
-          "match": "\\b[0-9]+\\s*[-+*/%]\\s*[0-9]+\\b"
+          "match": "\\b\\d+\\s*[-+*/%]\\s*\\d+\\b"
+        }
+      ]
+    },
+    "booleans": {
+      "patterns": [
+        {
+          "name": "constant.language.boolean",
+          "match": "\\b(true|false)\\b"
         }
       ]
     }
