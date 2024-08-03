@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: { year: string; month: 
   return (
     <article>
       <h1>{data?.title}</h1>
-      <MDXRemote source={data.body} />
+      <MDXRemote compiledSource={data.body} />
     </article>
   );
 }
