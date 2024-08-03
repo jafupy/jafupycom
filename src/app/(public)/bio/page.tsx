@@ -77,7 +77,7 @@ export default function BioPage() {
 function calculateAge(birthDate: string): number {
   const [day, month, year] = birthDate.split("-").map(Number);
   const today = new Date();
-  let age = today.getFullYear() - year;
+  let age = today.getFullYear() - year || 0;
   const m = today.getMonth() - month + 1;
 
   if (m < 0 || (m === 0 && today.getDate() < day)) {
