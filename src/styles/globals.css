@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+section {
+  @apply mx-auto px-5 py-12;
+}
+
+main {
+  @apply min-h-screen;
+}

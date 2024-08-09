@@ -1,0 +1,13 @@
+.tile {
+  transition: background-color 1500ms;
+}
+.tile:hover {
+  transition-duration: 0ms;
+}
+
+section {
+  @apply min-h-48 w-full px-5 py-12;
+}
+main {
+  @apply w-full;
+}
