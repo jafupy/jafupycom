@@ -1,14 +1,34 @@
-import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
 
-export default {
-  content: ["./src/**/*.tsx"],
+const config = {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
   theme: {
+    fontFamily: {
+      sans: ["Manrope", "sans-serif"],
+      mono: ["JetBrains Mono", "monospace"],
+    },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+      colors: {
+        "prussian-blue": "#1e293b",
+        "old-rose": "#cb8b8c",
+        platinum: "#dce1de",
+      },
+      spacing: {
+        "ch-sm": "60ch",
+        "ch-md": "80ch",
+        "ch-lg": "90ch",
+        "ch-xl": "120ch",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
+
+export default config;
