@@ -11,7 +11,7 @@ export default function Footer() {
 
   const { theme: currentTheme, setTheme: newTheme } = useTheme();
   useEffect(() => {
-    setTheme(currentTheme || "system");
+    setTheme(currentTheme ?? "system");
   }, [setTheme]);
 
   useEffect(() => {
