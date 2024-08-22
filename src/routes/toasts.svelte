@@ -14,7 +14,7 @@
 		helpers,
 		states: { toasts },
 		actions: { portal },
-	} = createToaster<ToastData>({ closeDelay: 60 * 60 * 1000 * 24 * 7 });
+	} = createToaster<ToastData>({ closeDelay: 5 * 1000, hover: 'pause-all' }); // 5 sec
 
 	export const newToast = (data: ToastData) => {
 		helpers.addToast({ data });

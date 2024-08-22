@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { assets } from '$lib';
-	import { ChevronRight, Command, FolderKanban, Newspaper, User } from 'lucide-svelte';
+	import { ChevronRight, Command, FolderKanban, Hammer, Newspaper, User } from 'lucide-svelte';
 	import { page } from '$app/stores';
 	import { newToast } from './toasts.svelte';
+	import Tag from '$lib/components/ui/tag';
 
 	let path: string[] = $derived(
 		$page.url.pathname.split('/').slice(2, $page.url.pathname.split('/').length - 1),
@@ -19,6 +20,7 @@
 			<img src={assets.logo} alt="Logo" class="h-10 w-10 rounded-lg" />
 			<span class="text-sm">Jafu.py</span>
 		</a>
+		<Tag icon={Hammer}>Beta</Tag>
 		<ul class="mx-auto flex flex-row items-center gap-4">
 			<li data-selected={currentPath.startsWith('/bio')} class="group flex items-center">
 				<User
