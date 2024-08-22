@@ -5,7 +5,7 @@
 <footer
 	class="not-prose flex w-full flex-col gap-4 border-t border-t-cold-stone-500/20 px-5 py-12 text-sm text-cold-stone-400"
 >
-	<ul class="flex flex-row items-baseline justify-center gap-4">
+	<ul class="flex flex-col-reverse items-baseline justify-center gap-4 sm:flex-row">
 		<li class="mr-auto">
 			Made with <Heart class="inline h-4 w-4 text-old-rose" /> by Jacob
 		</li>

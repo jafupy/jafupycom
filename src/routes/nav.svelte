@@ -1,50 +1,73 @@
 <script lang="ts">
-	import { assets } from '$lib';
-	import { ChevronRight, Command, FolderKanban, Hammer, Newspaper, User } from 'lucide-svelte';
+	import { assets, cn } from '$lib';
+	import {
+		ChevronRight,
+		Command,
+		FolderKanban,
+		Hammer,
+		Menu,
+		Newspaper,
+		User,
+		X,
+	} from 'lucide-svelte';
 	import { page } from '$app/stores';
 	import { newToast } from './toasts.svelte';
 	import Tag from '$lib/components/ui/tag';
+	import { slide } from 'svelte/transition';
 
 	let path: string[] = $derived(
 		$page.url.pathname.split('/').slice(2, $page.url.pathname.split('/').length - 1),
 	);
 	let currentPath = $derived($page.url.pathname);
 	let toast = $state(0);
+
+	let mobileMenuOpen = $state(false);
 </script>
 
-<header class="fixed inset-x-12 top-4 z-50 p-0">
+{#snippet items(mobile: boolean)}
+	<ul
+		class={cn('mx-auto flex-row items-center gap-4', mobile ? 'flex flex-col' : 'hidden sm:flex')}
+	>
+		<li data-selected={currentPath.startsWith('/bio')} class="group flex items-center">
+			<a onclick={() => (mobileMenuOpen = false)} href="/bio">
+				<User
+					strokeWidth={currentPath.startsWith('/bio') ? 2 : 1}
+					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
+				/>
+				Bio</a
+			>
+		</li>
+		<li data-selected={currentPath.startsWith('/projects')} class="group flex items-center">
+			<a onclick={() => (mobileMenuOpen = false)} href="/projects">
+				<FolderKanban
+					strokeWidth={currentPath.startsWith('/projects') ? 2 : 1}
+					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
+				/>
+				Projects</a
+			>
+		</li>
+		<li data-selected={currentPath.startsWith('/blog')} class="group flex items-center">
+			<a onclick={() => (mobileMenuOpen = false)} href="/blog"
+				><Newspaper
+					strokeWidth={currentPath.startsWith('/blog') ? 2 : 1}
+					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
+				/> Blog</a
+			>
+		</li>
+	</ul>
+{/snippet}
+
+<header class="fixed inset-x-4 top-4 z-50 p-0 sm:inset-x-12">
 	<nav
-		class="not-prose group flex list-none items-center justify-center rounded-xl border border-cold-stone-100/10 bg-cold-stone-950/20 p-1 pr-4 text-sm shadow-md backdrop-blur-md hover:border-cold-stone-100/20"
+		data-mobile-open={mobileMenuOpen}
+		class="not-prose group flex list-none items-center justify-center rounded-xl border border-cold-stone-100/10 bg-cold-stone-950/20 p-1 pr-4 text-sm shadow-md backdrop-blur-md hover:border-cold-stone-100/20 data-[mobile-open=true]:rounded-b-md data-[mobile-open=true]:border-cold-stone-100/20"
 	>
 		<a href="/" class="flex items-center justify-between gap-2 pr-4">
 			<img src={assets.logo} alt="Logo" class="h-10 w-10 rounded-lg" />
 			<span class="text-sm">Jafu.py</span>
 		</a>
 		<Tag icon={Hammer}>Beta</Tag>
-		<ul class="mx-auto flex flex-row items-center gap-4">
-			<li data-selected={currentPath.startsWith('/bio')} class="group flex items-center">
-				<User
-					strokeWidth={currentPath.startsWith('/bio') ? 2 : 1}
-					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
-				/>
-				<a href="/bio">Bio</a>
-			</li>
-			<li data-selected={currentPath.startsWith('/projects')} class="group flex items-center">
-				<FolderKanban
-					strokeWidth={currentPath.startsWith('/projects') ? 2 : 1}
-					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
-				/>
-				<a href="/projects">Projects</a>
-			</li>
-			<li data-selected={currentPath.startsWith('/blog')} class="group flex items-center">
-				<a href="/blog"
-					><Newspaper
-						strokeWidth={currentPath.startsWith('/blog') ? 2 : 1}
-						class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
-					/> Blog</a
-				>
-			</li>
-		</ul>
+		{@render items(false)}
 
 		<button
 			onclick={() => {
@@ -54,7 +77,7 @@
 					variant: 'error',
 				});
 			}}
-			class="flex items-center rounded-md border border-cold-stone-100/10 px-3 py-1 text-sm opacity-50"
+			class="hidden cursor-not-allowed items-center rounded-md border border-cold-stone-100/10 px-3 py-1 text-sm opacity-50 md:flex"
 			>Search
 			<span class="ml-2 flex items-center gap-1 font-mono text-xs">
 				<kbd><Command class="h-3 w-3 text-cold-stone-500" /></kbd>+<kbd class=" text-cold-stone-500"
@@ -62,5 +85,21 @@
 				>
 			</span>
 		</button>
+		<button class="ml-auto sm:hidden" onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
+			><span class="sr-only"> Toggle Navigation </span>
+			{#if mobileMenuOpen}
+				<X class="h-6 w-6" stroke-width={1} />
+			{:else}
+				<Menu stroke-width={1} class="h-6 w-6" />
+			{/if}
+		</button>
 	</nav>
+	{#if mobileMenuOpen}
+		<div
+			transition:slide={{ axis: 'y' }}
+			class="mt-2 rounded-b-xl rounded-t-md border border-cold-stone-100/20 bg-cold-stone-950/20 px-4 py-6 backdrop-blur-md"
+		>
+			{@render items(true)}
+		</div>
+	{/if}
 </header>

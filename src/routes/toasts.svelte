@@ -38,7 +38,7 @@
 			out:fly={{ x: 20, duration: 300, delay: index * 100 }}
 			use:melt={$content(id)}
 			class={cn(
-				'group-[item] -mt-16 flex flex-col items-center rounded-xl border bg-cold-stone-950/20 p-4 text-sm shadow-md backdrop-blur-md transition-all group-hover:mt-2 group-hover:scale-100 group-hover:opacity-100',
+				'group-[item] max-w-screen -mt-16 flex w-80 flex-col rounded-xl border bg-cold-stone-950/20 p-4 text-sm shadow-md backdrop-blur-md transition-all group-hover:mt-2 group-hover:scale-100 group-hover:opacity-100',
 				styles[data.variant],
 				['', 'scale-90 opacity-90', 'scale-[0.8] opacity-80', 'scale-[0.7] opacity-25'][index],
 			)}

@@ -23,7 +23,7 @@
 	well.
 </p>
 
-<div class="grid w-full max-w-ch-xl grid-cols-3 gap-4">
+<div class="grid w-full max-w-ch-xl gap-4 sm:grid-cols-2 md:grid-cols-3">
 	<Card>
 		<C.Header icon={Anvil} iconColor="text-prussian-blue-200">
 			<C.H.Title>Pandora's Box</C.H.Title>
