@@ -1,0 +1,31 @@
+======== ITEMS ========
+{
+    projects: {
+        ... projects
+
+        pandora components ROOT
+    }
+    links: {
+        Github,
+        Twitter,
+        ... /r/* where hidden = false
+    }
+    blog {
+        ... blog from Github CDN
+    }
+    
+    
+}
+
+
+
+======== Logic ========
+query, items
+
+get all leaves from items
+
+filter leaves to match query
+
+for each item get category
+render category
+inside category render all items that match query

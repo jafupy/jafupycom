@@ -1,0 +1,22 @@
+# Changelog
+
+## V4 (2024-8-19)
+Complete rewrite of the entire website. Including the UI.
+## Previous versions
+
+### V3 (???)
+
+- Added Bio
+
+### V2 (???)
+
+
+Complete rewrite, using TailwindCSS instead of SCSS.
+
+### V1 (???)
+
+Going from vanilla JS to Svelte.
+
+### V0 (???)
+
+Initial commit.

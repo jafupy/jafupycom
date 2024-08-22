@@ -1,0 +1,18 @@
+<script lang="ts">
+	import Stepper from '$lib/components/ui/stepper/component.svelte';
+    import Tag from '$lib/components/ui/tag/component.svelte';
+</script>
+# Pandora's Box (v0 Alpha)
+
+Pandora's Box is a collection of Svelte UI components that are over-animated and over-engineered.
+
+Pandora is still in early dev. Pandora is MIT licensed, and is available on [Github](https://github.com/jafupy/pandoras-Box).
+
+## Components
+### Stepper
+A simple counter.
+<Stepper />
+
+### Tag
+A simple tag component.
+<Tag> Tag </Tag>

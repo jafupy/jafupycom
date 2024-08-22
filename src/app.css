@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section {
+	@apply mx-auto;
+}
+
+main {
+	scroll-behavior: smooth;
+	scroll-snap-align: start;
+	scroll-snap-type: proximity;
+}
+article > aside {
+	@apply sticky top-20 flex flex-col items-center justify-center;
+}
+
+body {
+	--grid-size: 5rem;
+	--grid-color: hsla(199deg, 10.1%, 57.3%, 0.04);
+	--grid-bg-color: hsla(200deg, 16.7%, 7.06%, 1);
+
+	background: linear-gradient(
+			0deg,
+			transparent 24%,
+			var(--grid-color) 25%,
+			var(--grid-color) 26%,
+			transparent 27%,
+			transparent 74%,
+			var(--grid-color) 75%,
+			var(--grid-color) 76%,
+			transparent 77%,
+			transparent
+		),
+		linear-gradient(
+			90deg,
+			transparent 24%,
+			var(--grid-color) 25%,
+			var(--grid-color) 26%,
+			transparent 27%,
+			transparent 74%,
+			var(--grid-color) 75%,
+			var(--grid-color) 76%,
+			transparent 77%,
+			transparent
+		);
+	background-size: var(--grid-size) var(--grid-size);
+}
+body::after {
+	z-index: -49;
+	content: '';
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: radial-gradient(circle at center, transparent, var(--grid-bg-color) 80%);
+}
+
+article > main > h1:first-child {
+	@apply mx-auto text-center font-mono text-5xl font-normal;
+}
