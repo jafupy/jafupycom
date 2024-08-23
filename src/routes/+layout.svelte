@@ -25,7 +25,7 @@
 
 <Nav />
 <main
-	class="prose-cold-stone prose prose-invert mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center px-5 pb-12 pt-32"
+	class="prose prose-neutral prose-invert mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center px-5 pb-12 pt-32"
 >
 	<slot></slot>
 </main>
@@ -36,6 +36,6 @@
 <div
 	class={cn(
 		'absolute left-1/2 top-0 -z-50 aspect-square w-screen max-w-52 -translate-x-1/2 -translate-y-1/2 blur-3xl  sm:scale-[3]',
-		$page?.status !== 200 ? 'bg-well-red-400' : 'bg-prussian-blue-700',
+		$page?.status !== 200 ? 'bg-red-400' : 'bg-prussian-blue-700',
 	)}
 ></div>

@@ -11,7 +11,7 @@
 	<div class="mx-auto max-w-2xl">
 		<div class="hidden sm:mb-8 sm:flex sm:justify-center">
 			<div
-				class="relative rounded-full px-3 py-1 text-sm leading-6 text-cold-stone-400 ring-1 ring-cold-stone-100/10 hover:ring-cold-stone-100/20"
+				class="relative rounded-full px-3 py-1 text-sm leading-6 text-neutral-400 ring-1 ring-neutral-100/10 hover:ring-neutral-100/20"
 			>
 				Introducing Version I don't even know at this point <a
 					href="/changelog"
@@ -22,9 +22,9 @@
 			</div>
 		</div>
 		<div class="text-center">
-			<h1 class="mb-0 text-4xl tracking-tight text-cold-stone-100 sm:text-9xl">Jacob</h1>
-			<p class="mt-0 text-lg leading-8 text-cold-stone-400 sm:text-2xl">@Jafu.py</p>
-			<p class="mt-6 leading-8 text-cold-stone-400">
+			<h1 class="mb-0 text-4xl tracking-tight text-neutral-100 sm:text-9xl">Jacob</h1>
+			<p class="mt-0 text-lg leading-8 text-neutral-400 sm:text-2xl">@Jafu.py</p>
+			<p class="mt-6 leading-8 text-neutral-400">
 				Web dev, ameteur guitarist and professional waste of space
 			</p>
 		</div>

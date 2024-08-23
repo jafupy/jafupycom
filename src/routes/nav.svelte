@@ -32,7 +32,7 @@
 			<a onclick={() => (mobileMenuOpen = false)} href="/bio">
 				<User
 					strokeWidth={currentPath.startsWith('/bio') ? 2 : 1}
-					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
+					class="mr-2 inline h-4 w-4 text-neutral-100/50 group-hover:text-neutral-100/75 group-data-[selected=true]:text-old-rose"
 				/>
 				Bio</a
 			>
@@ -41,7 +41,7 @@
 			<a onclick={() => (mobileMenuOpen = false)} href="/projects">
 				<FolderKanban
 					strokeWidth={currentPath.startsWith('/projects') ? 2 : 1}
-					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
+					class="mr-2 inline h-4 w-4 text-neutral-100/50 group-hover:text-neutral-100/75 group-data-[selected=true]:text-old-rose"
 				/>
 				Projects</a
 			>
@@ -50,7 +50,7 @@
 			<a onclick={() => (mobileMenuOpen = false)} href="/blog"
 				><Newspaper
 					strokeWidth={currentPath.startsWith('/blog') ? 2 : 1}
-					class="mr-2 inline h-4 w-4 text-cold-stone-100/50 group-hover:text-cold-stone-100/75 group-data-[selected=true]:text-old-rose"
+					class="mr-2 inline h-4 w-4 text-neutral-100/50 group-hover:text-neutral-100/75 group-data-[selected=true]:text-old-rose"
 				/> Blog</a
 			>
 		</li>
@@ -60,7 +60,7 @@
 <header class="fixed inset-x-4 top-4 z-50 p-0 sm:inset-x-12">
 	<nav
 		data-mobile-open={mobileMenuOpen}
-		class="not-prose group flex list-none items-center justify-center rounded-xl border border-cold-stone-100/10 bg-cold-stone-950/20 p-1 pr-4 text-sm shadow-md backdrop-blur-md hover:border-cold-stone-100/20 data-[mobile-open=true]:rounded-b-md data-[mobile-open=true]:border-cold-stone-100/20"
+		class="not-prose group flex list-none items-center justify-center rounded-xl border border-neutral-100/10 bg-neutral-950/20 p-1 pr-4 text-sm shadow-md backdrop-blur-md hover:border-neutral-100/20 data-[mobile-open=true]:rounded-b-md data-[mobile-open=true]:border-neutral-100/20"
 	>
 		<a href="/" class="flex items-center justify-between gap-2 pr-4">
 			<img src={assets.logo} alt="Logo" class="h-10 w-10 rounded-lg" />
@@ -77,10 +77,10 @@
 					variant: 'error',
 				});
 			}}
-			class="hidden cursor-not-allowed items-center rounded-md border border-cold-stone-100/10 px-3 py-1 text-sm opacity-50 md:flex"
+			class="hidden cursor-not-allowed items-center rounded-md border border-neutral-100/10 px-3 py-1 text-sm opacity-50 md:flex"
 			>Search
 			<span class="ml-2 flex items-center gap-1 font-mono text-xs">
-				<kbd><Command class="h-3 w-3 text-cold-stone-500" /></kbd>+<kbd class=" text-cold-stone-500"
+				<kbd><Command class="h-3 w-3 text-neutral-500" /></kbd>+<kbd class=" text-neutral-500"
 					>K</kbd
 				>
 			</span>
@@ -97,7 +97,7 @@
 	{#if mobileMenuOpen}
 		<div
 			transition:slide={{ axis: 'y' }}
-			class="mt-2 rounded-b-xl rounded-t-md border border-cold-stone-100/20 bg-cold-stone-950/20 px-4 py-6 backdrop-blur-md"
+			class="mt-2 rounded-b-xl rounded-t-md border border-neutral-100/20 bg-neutral-950/20 px-4 py-6 backdrop-blur-md"
 		>
 			{@render items(true)}
 		</div>

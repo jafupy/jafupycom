@@ -78,7 +78,7 @@
 		</C.Header>
 		<C.Content>
 			<img
-				class="rounded-md border border-cold-stone-100/20"
+				class="rounded-md border border-neutral-100/20"
 				src={wikiredesign}
 				alt="Mockup of Wikipedia Redesign"
 			/>
@@ -118,7 +118,7 @@
 		</C.Header>
 		<C.Content>
 			<img
-				class="rounded-md border border-cold-stone-100/20"
+				class="rounded-md border border-neutral-100/20"
 				src={assets.banner}
 				alt="Banner for V6"
 			/>

@@ -3,7 +3,7 @@
 </script>
 
 <footer
-	class="not-prose flex w-full flex-col gap-4 border-t border-t-cold-stone-500/20 px-5 py-12 text-sm text-cold-stone-400"
+	class="not-prose flex w-full flex-col gap-4 border-t border-t-neutral-500/20 px-5 py-12 text-sm text-neutral-400"
 >
 	<ul class="flex flex-col-reverse items-baseline justify-center gap-4 sm:flex-row">
 		<li class="mr-auto">

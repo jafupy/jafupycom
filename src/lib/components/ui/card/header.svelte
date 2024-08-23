@@ -20,7 +20,7 @@
 	</div>
 	{#if Icon}
 		<div
-			class="group ml-auto flex aspect-square h-fit w-fit items-center justify-center rounded-md border border-cold-stone-100/10 p-2 text-cold-stone-50 shadow-md hover:border-cold-stone-100/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lavendar-400 disabled:pointer-events-none disabled:opacity-50"
+			class="group ml-auto flex aspect-square h-fit w-fit items-center justify-center rounded-md border border-neutral-100/10 p-2 text-neutral-50 shadow-md hover:border-neutral-100/20 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50"
 		>
 			{#if typeof Icon === 'string'}
 				<img src={Icon} alt="Icon" class="h-4 w-4" />

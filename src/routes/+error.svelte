@@ -15,6 +15,6 @@
 </p>
 <a
 	href="/"
-	class="mx-auto mt-2 flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-md border border-cold-stone-50 px-4 py-2 text-sm font-medium no-underline shadow-md hover:border-cold-stone-50/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lavendar-400 disabled:pointer-events-none disabled:opacity-50"
+	class="mx-auto mt-2 flex h-9 w-fit items-center justify-center whitespace-nowrap rounded-md border border-neutral-50 px-4 py-2 text-sm font-medium no-underline shadow-md hover:border-neutral-50/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50"
 	>Go Home</a
 >

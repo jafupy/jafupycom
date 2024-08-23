@@ -22,8 +22,8 @@ I'm also searching to find an excuse to learn [Go](https://go.dev/).
 ### Games
 - [Minecraft](https://www.minecraft.net/)
 
-- [Cities: Skylines](https://store.steampowered.com/app/255710/Cities_Skylines/)
-- [Cities: Skylines II](https://store.steampowered.com/app/949230/Cities_Skylines_II/) 
+- [Cities: bluelines](https://store.steampowered.com/app/255710/Cities_bluelines/)
+- [Cities: bluelines II](https://store.steampowered.com/app/949230/Cities_bluelines_II/) 
 
 - [Timberborn](https://store.steampowered.com/app/1062090/Timberborn/)
 - [Lego City Undercover](https://store.steampowered.com/app/578330/LEGO_City_Undercover/)

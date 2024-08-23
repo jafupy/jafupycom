@@ -4,5 +4,5 @@ import Button from './button';
 
 export const _util = {
 	accessibility:
-		'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-lavendar-400 disabled:pointer-events-none disabled:opacity-50',
+		'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50',
 };
