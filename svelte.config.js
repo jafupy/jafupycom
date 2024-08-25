@@ -3,6 +3,7 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { mdsvex } from 'mdsvex';
 import Shiki from '@shikijs/rehype';
+import RehypeSlug from 'rehype-slug';
 //
 /** @type {import('@sveltejs/kit').Config}*/
 const config = {
@@ -14,7 +15,7 @@ const config = {
 			extensions: ['.svx'],
 			smartypants: true,
 			layout: 'src/lib/svx.svelte',
-			rehypePlugins: [Shiki],
+			rehypePlugins: [Shiki, RehypeSlug],
 		}),
 		preprocessMeltUI(),
 	]),

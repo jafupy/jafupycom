@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
 	import { cn } from '$lib';
 	import { createToaster, melt } from '@melt-ui/svelte';
-	import { X } from 'lucide-svelte';
+	import { CircleAlert, CircleX, Variable, X } from 'lucide-svelte';
 	import { fly, scale } from 'svelte/transition';
 	export type ToastData = {
 		title: string;
@@ -24,7 +24,7 @@
 		success: 'border-green-400 hover:border-green-300',
 		error: 'border-red-400 hover:border-red-300',
 		warning: 'border-yellow-400 hover:border-yellow-300',
-		info: 'border-neutral-100/10 hover:border-neutral-100/20',
+		info: 'border-grey-100/10 hover:border-grey-100/20',
 	};
 </script>
 
@@ -42,7 +42,7 @@
 			}}
 			use:melt={$content(id)}
 			class={cn(
-				'group-[item] max-w-screen -mt-16 flex w-80 flex-col rounded-xl border bg-neutral-950/20 p-4 text-sm shadow-md backdrop-blur-md transition-all group-hover:mt-2 group-hover:scale-100 group-hover:opacity-100',
+				'group-[item] max-w-screen bg-grey-950/20 -mt-16 flex w-80 flex-col rounded-xl border p-4 text-sm shadow-md backdrop-blur-md transition-all group-hover:mt-2 group-hover:scale-100 group-hover:opacity-100',
 				styles[data.variant],
 				[
 					'',
@@ -57,6 +57,11 @@
 			data-id={index.toString()}
 		>
 			<div class="flex w-full items-center">
+				{#if data.variant === 'error'}
+					<CircleX class="mr-2 h-4 w-4 text-red-400" />
+				{:else if data.variant === 'warning'}
+					<CircleAlert class="mr-2 h-4 w-4 text-yellow-400" />
+				{/if}
 				<h3 class="font-semibold" use:melt={$title(id)}>
 					{data.title}
 				</h3>

@@ -33,7 +33,7 @@
 <div class="flex w-fit flex-row items-center justify-center gap-2">
 	<button
 		disabled={count <= 0 || count <= min}
-		class="rounded-full border border-neutral-100/10 p-2 hover:border-neutral-100/20 disabled:opacity-50"
+		class="border-grey-100/10 hover:border-grey-100/20 rounded-full border p-2 disabled:opacity-50"
 		onclick={subtract}><Minus class="h-4 w-4 " /></button
 	>
 	<div class="relative flex gap-0 overflow-hidden font-mono">
@@ -84,7 +84,7 @@
 	<button
 		disabled={count >= 999 || count >= max}
 		onclick={add}
-		class="rounded-full border border-neutral-100/10 p-2 hover:border-neutral-100/20 disabled:opacity-50"
+		class="border-grey-100/10 hover:border-grey-100/20 rounded-full border p-2 disabled:opacity-50"
 		><Plus class="h-4 w-4 " /></button
 	>
 </div>

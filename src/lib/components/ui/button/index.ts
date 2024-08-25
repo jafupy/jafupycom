@@ -4,10 +4,10 @@ export const styles = {
 	//BTN
 	base: 'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm',
 	variants: {
-		default: 'bg-neutral-50 text-neutral-950 shadow-md hover:bg-neutral-50/90',
-		destructive: 'bg-red-400 text-text-neutral-950 shadow-md hover:bg-red-400/90',
-		outline: 'border border-neutral-100/10 shadow-md hover:border-neutral-100/20',
-		ghost: 'hover:border-neutral-100/20',
+		default: 'bg-grey-50 text-grey-950 shadow-md hover:bg-grey-50/90',
+		destructive: 'bg-red-400 text-text-grey-950 shadow-md hover:bg-red-400/90',
+		outline: 'border border-grey-100/10 shadow-md hover:border-grey-100/20',
+		ghost: 'hover:border-grey-100/20',
 		link: 'underline-offset-2 underline hover:text-blue-400 text-blue-300',
 	},
 	sizes: {

@@ -44,6 +44,7 @@
 		"@supabase/ssr": "^0.5.0",
 		"@supabase/supabase-js": "^2.45.1",
 		"cmdk-sv": "^0.0.18",
-		"lucide-svelte": "^0.428.0"
+		"lucide-svelte": "^0.428.0",
+		"rehype-slug": "^6.0.0"
 	}
 }

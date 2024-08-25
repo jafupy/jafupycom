@@ -6,7 +6,7 @@
 
 <div
 	class={cn(
-		'prose prose-neutral prose-invert h-full max-h-[200px] overflow-y-scroll text-sm',
+		'prose-grey prose prose-invert h-full max-h-[200px] overflow-y-scroll text-sm',
 		className,
 	)}
 >

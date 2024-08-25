@@ -6,7 +6,7 @@
 
 <article
 	class={cn(
-		'not-prose relative w-full overflow-hidden rounded-xl border border-neutral-500/25 p-6 shadow-md',
+		'not-prose border-grey-500/25 relative w-full overflow-hidden rounded-xl border p-6 shadow-md',
 		className,
 	)}
 >

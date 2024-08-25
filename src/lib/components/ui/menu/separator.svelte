@@ -6,4 +6,4 @@
 	} = createSeparator({ orientation: 'horizontal' });
 </script>
 
-<div use:melt={$Separator} class="my-2 h-[1px] w-full bg-neutral-500"></div>
+<div use:melt={$Separator} class="bg-grey-100/20 mx-auto h-px w-[80%]"></div>

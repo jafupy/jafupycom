@@ -61,3 +61,11 @@ body::after {
 article > main > h1:first-child {
 	@apply mx-auto text-center font-mono text-5xl font-normal;
 }
+/* 
+*:focus {
+	@apply outline outline-blue-500;
+} */
+
+section {
+	@apply px-5;
+}

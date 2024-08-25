@@ -4,4 +4,4 @@
 	let { class: className = '', children }: { class?: string; children: () => any } = $props();
 </script>
 
-<span class={cn('text-sm text-neutral-500', className)}>{@render children()}</span>
+<span class={cn('text-grey-500 text-sm', className)}>{@render children()}</span>

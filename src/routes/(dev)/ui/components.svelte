@@ -23,7 +23,7 @@
 		<C.Content>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</C.Content>
 		<C.Footer>
 			<button
-				class="ml-auto inline-flex h-9 items-center justify-center whitespace-nowrap rounded-md bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-950 shadow-md hover:bg-neutral-50/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50"
+				class="bg-grey-50 text-grey-950 hover:bg-grey-50/90 ml-auto inline-flex h-9 items-center justify-center whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium shadow-md focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400 disabled:pointer-events-none disabled:opacity-50"
 				>Button</button
 			>
 		</C.Footer>
@@ -39,15 +39,15 @@
 				<div use:melt={$item('Cold Stone')}>
 					<h4 use:melt={$trigger}>Cold Stone</h4>
 					<div class="grid grid-cols-4 gap-2" use:melt={$content}>
-						{#each ['bg-neutral-950', 'bg-neutral-900', 'bg-neutral-800', 'bg-neutral-700', 'bg-neutral-600', 'bg-neutral-500', 'bg-neutral-400', 'bg-neutral-300', 'bg-neutral-200', 'bg-neutral-100', 'bg-neutral-50'] as color}
+						{#each ['bg-grey-950', 'bg-grey-900', 'bg-grey-800', 'bg-grey-700', 'bg-grey-600', 'bg-grey-500', 'bg-grey-400', 'bg-grey-300', 'bg-grey-200', 'bg-grey-100', 'bg-grey-50'] as color}
 							<div
 								class={cn(
-									'rounded-md border border-neutral-100/10  px-4 py-2',
+									'border-grey-100/10 rounded-md border  px-4 py-2',
 									color,
-									parseInt(color.replace('bg-neutral-', '')) < 500 ? 'text-neutral-950' : '',
+									parseInt(color.replace('bg-grey-', '')) < 500 ? 'text-grey-950' : '',
 								)}
 							>
-								#{color.replace('bg-neutral-', '')}
+								#{color.replace('bg-grey-', '')}
 							</div>
 						{/each}
 					</div>
@@ -57,9 +57,9 @@
 					{#each ['bg-prussian-blue-800', 'bg-prussian-blue-700', 'bg-prussian-blue-600', 'bg-prussian-blue-500', 'bg-prussian-blue-400', 'bg-prussian-blue-300', 'bg-prussian-blue-200'] as color}
 						<div
 							class={cn(
-								'rounded-md border border-neutral-100/10  px-4 py-2',
+								'border-grey-100/10 rounded-md border  px-4 py-2',
 								color,
-								parseInt(color.replace('bg-prussian-blue-', '')) < 500 ? 'text-neutral-950' : '',
+								parseInt(color.replace('bg-prussian-blue-', '')) < 500 ? 'text-grey-950' : '',
 							)}
 						>
 							#{color.replace('bg-prussian-blue-', '')}
@@ -71,9 +71,9 @@
 					{#each ['bg-old-rose-800', 'bg-old-rose-700', 'bg-old-rose-600', 'bg-old-rose-500', 'bg-old-rose-400', 'bg-old-rose-300', 'bg-old-rose-200'] as color}
 						<div
 							class={cn(
-								'rounded-md border border-neutral-100/10  px-4 py-2',
+								'border-grey-100/10 rounded-md border  px-4 py-2',
 								color,
-								parseInt(color.replace('bg-old-rose-', '')) < 500 ? 'text-neutral-950' : '',
+								parseInt(color.replace('bg-old-rose-', '')) < 500 ? 'text-grey-950' : '',
 							)}
 						>
 							#{color.replace('bg-old-rose-', '')}
@@ -85,9 +85,9 @@
 					{#each ['bg-red-800', 'bg-red-700', 'bg-red-600', 'bg-red-500', 'bg-red-400', 'bg-red-300', 'bg-red-200'] as color}
 						<div
 							class={cn(
-								'rounded-md border border-neutral-100/10  px-4 py-2',
+								'border-grey-100/10 rounded-md border  px-4 py-2',
 								color,
-								parseInt(color.replace('bg-red-', '')) < 500 ? 'text-neutral-950' : '',
+								parseInt(color.replace('bg-red-', '')) < 500 ? 'text-grey-950' : '',
 							)}
 						>
 							#{color.replace('bg-red-', '')}
@@ -99,9 +99,9 @@
 					{#each ['bg-green-800', 'bg-green-700', 'bg-green-600', 'bg-green-500', 'bg-green-400', 'bg-green-300', 'bg-green-200'] as color}
 						<div
 							class={cn(
-								'rounded-md border border-neutral-100/10  px-4 py-2',
+								'border-grey-100/10 rounded-md border  px-4 py-2',
 								color,
-								parseInt(color.replace('bg-green-', '')) < 500 ? 'text-neutral-950' : '',
+								parseInt(color.replace('bg-green-', '')) < 500 ? 'text-grey-950' : '',
 							)}
 						>
 							#{color.replace('bg-green-', '')}
@@ -110,17 +110,17 @@
 				</div>
 				<h4>Cold Stone</h4>
 				<div class="grid grid-cols-4 gap-2">
-					{#each ['bg-neutral-950', 'bg-neutral-900', 'bg-neutral-800', 'bg-neutral-700', 'bg-neutral-600', 'bg-neutral-500', 'bg-neutral-400', 'bg-neutral-300', 'bg-neutral-200', 'bg-neutral-100'] as color}
-						<div class={cn('rounded-md border border-neutral-100/10  px-4 py-2', color)}>
-							#{color.replace('bg-neutral-', '')}
+					{#each ['bg-grey-950', 'bg-grey-900', 'bg-grey-800', 'bg-grey-700', 'bg-grey-600', 'bg-grey-500', 'bg-grey-400', 'bg-grey-300', 'bg-grey-200', 'bg-grey-100'] as color}
+						<div class={cn('border-grey-100/10 rounded-md border  px-4 py-2', color)}>
+							#{color.replace('bg-grey-', '')}
 						</div>
 					{/each}
 				</div>
 				<h4>Cold Stone</h4>
 				<div class="grid grid-cols-4 gap-2">
-					{#each ['bg-neutral-950', 'bg-neutral-900', 'bg-neutral-800', 'bg-neutral-700', 'bg-neutral-600', 'bg-neutral-500', 'bg-neutral-400', 'bg-neutral-300', 'bg-neutral-200', 'bg-neutral-100'] as color}
-						<div class={cn('rounded-md border border-neutral-100/10  px-4 py-2', color)}>
-							#{color.replace('bg-neutral-', '')}
+					{#each ['bg-grey-950', 'bg-grey-900', 'bg-grey-800', 'bg-grey-700', 'bg-grey-600', 'bg-grey-500', 'bg-grey-400', 'bg-grey-300', 'bg-grey-200', 'bg-grey-100'] as color}
+						<div class={cn('border-grey-100/10 rounded-md border  px-4 py-2', color)}>
+							#{color.replace('bg-grey-', '')}
 						</div>
 					{/each}
 				</div>

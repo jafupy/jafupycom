@@ -78,7 +78,7 @@
 		</C.Header>
 		<C.Content>
 			<img
-				class="rounded-md border border-neutral-100/20"
+				class="border-grey-100/20 rounded-md border"
 				src={wikiredesign}
 				alt="Mockup of Wikipedia Redesign"
 			/>
@@ -117,11 +117,7 @@
 			</C.H.Description>
 		</C.Header>
 		<C.Content>
-			<img
-				class="rounded-md border border-neutral-100/20"
-				src={assets.banner}
-				alt="Banner for V6"
-			/>
+			<img class="border-grey-100/20 rounded-md border" src={assets.banner} alt="Banner for V6" />
 			<p>
 				Version 6 of my branding. This includes a new logo, a new color scheme and a new social
 				media banner.
