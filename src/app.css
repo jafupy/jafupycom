@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,6 +15,10 @@ main {
 }
 article > aside {
 	@apply sticky top-20 flex flex-col items-center justify-center;
+}
+
+article {
+	@apply pt-12;
 }
 
 body {
@@ -64,7 +69,7 @@ article > main > h1:first-child {
 /* 
 *:focus {
 	@apply outline outline-blue-500;
-} */
+}  */
 
 section {
 	@apply px-5;

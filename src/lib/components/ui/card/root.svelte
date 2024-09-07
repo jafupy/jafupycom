@@ -4,11 +4,11 @@
 	let { class: className = '', children }: { class?: string; children: () => any } = $props();
 </script>
 
-<article
+<div
 	class={cn(
-		'not-prose border-grey-500/25 relative w-full overflow-hidden rounded-xl border p-6 shadow-md',
+		'not-prose relative w-full max-w-[350px] overflow-hidden rounded-xl border border-grey-500/25 p-6 shadow-md',
 		className,
 	)}
 >
 	{@render children()}
-</article>
+</div>

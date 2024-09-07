@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import colors, { transparent, yellow } from 'tailwindcss/colors';
 import typography from '@tailwindcss/typography';
+import forms from '@tailwindcss/forms';
 
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts,svx}'],
@@ -111,7 +112,7 @@ const config = {
 			},
 		},
 	},
-	plugins: [typography],
+	plugins: [typography, forms],
 } satisfies Config;
 
 export default config;

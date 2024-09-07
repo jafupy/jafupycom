@@ -32,7 +32,7 @@
 			<a onclick={() => (mobileMenuOpen = false)} href="/bio">
 				<User
 					strokeWidth={currentPath.startsWith('/bio') ? 2 : 1}
-					class="text-grey-100/50 group-hover:text-grey-100/75 mr-2 inline h-4 w-4 group-data-[selected=true]:text-old-rose"
+					class="mr-2 inline h-4 w-4 text-grey-100/50 group-hover:text-grey-100/75 group-data-[selected=true]:text-old-rose"
 				/>
 				Bio</a
 			>
@@ -41,7 +41,7 @@
 			<a onclick={() => (mobileMenuOpen = false)} href="/projects">
 				<FolderKanban
 					strokeWidth={currentPath.startsWith('/projects') ? 2 : 1}
-					class="text-grey-100/50 group-hover:text-grey-100/75 mr-2 inline h-4 w-4 group-data-[selected=true]:text-old-rose"
+					class="mr-2 inline h-4 w-4 text-grey-100/50 group-hover:text-grey-100/75 group-data-[selected=true]:text-old-rose"
 				/>
 				Projects</a
 			>
@@ -50,7 +50,7 @@
 			<a onclick={() => (mobileMenuOpen = false)} href="/blog"
 				><Newspaper
 					strokeWidth={currentPath.startsWith('/blog') ? 2 : 1}
-					class="text-grey-100/50 group-hover:text-grey-100/75 mr-2 inline h-4 w-4 group-data-[selected=true]:text-old-rose"
+					class="mr-2 inline h-4 w-4 text-grey-100/50 group-hover:text-grey-100/75 group-data-[selected=true]:text-old-rose"
 				/> Blog</a
 			>
 		</li>
@@ -60,13 +60,13 @@
 <header class="fixed inset-x-4 top-4 z-50 p-0 sm:inset-x-12">
 	<nav
 		data-mobile-open={mobileMenuOpen}
-		class="not-prose border-grey-100/10 bg-grey-950/20 hover:border-grey-100/20 data-[mobile-open=true]:border-grey-100/20 group flex list-none items-center justify-center rounded-xl border p-1 pr-4 text-sm shadow-md backdrop-blur-md data-[mobile-open=true]:rounded-b-md"
+		class="not-prose group flex list-none items-center justify-center rounded-xl border border-grey-100/10 bg-grey-950/20 p-1 pr-4 text-sm shadow-md backdrop-blur-md hover:border-grey-100/20 data-[mobile-open=true]:rounded-b-md data-[mobile-open=true]:border-grey-100/20"
 	>
 		<a href="/" class="flex items-center justify-between gap-2 pr-4">
 			<img src={assets.logo} alt="Logo" class="h-10 w-10 rounded-lg" />
 			<span class="text-sm">Jafu.py</span>
 		</a>
-		<Tag icon={Hammer}>Beta</Tag>
+		<Tag icon={Hammer}>{import.meta.env.DEV ? 'Dev' : 'Beta'}</Tag>
 		{@render items(false)}
 
 		<button
@@ -77,10 +77,10 @@
 					variant: 'error',
 				});
 			}}
-			class="border-grey-100/10 hidden cursor-not-allowed items-center rounded-md border px-3 py-1 text-sm opacity-50 md:flex"
+			class="hidden cursor-not-allowed items-center rounded-md border border-grey-100/10 px-3 py-1 text-sm opacity-50 md:flex"
 			>Search
 			<span class="ml-2 flex items-center gap-1 font-mono text-xs">
-				<kbd><Command class="text-grey-500 h-3 w-3" /></kbd>+<kbd class=" text-grey-500">K</kbd>
+				<kbd><Command class="h-3 w-3 text-grey-500" /></kbd>+<kbd class=" text-grey-500">K</kbd>
 			</span>
 		</button>
 		<button class="ml-auto sm:hidden" onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
@@ -95,7 +95,7 @@
 	{#if mobileMenuOpen}
 		<div
 			transition:slide={{ axis: 'y' }}
-			class="border-grey-100/20 bg-grey-950/20 mt-2 rounded-b-xl rounded-t-md border px-4 py-6 backdrop-blur-md"
+			class="mt-2 rounded-b-xl rounded-t-md border border-grey-100/20 bg-grey-950/20 px-4 py-6 backdrop-blur-md"
 		>
 			{@render items(true)}
 		</div>
