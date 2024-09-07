@@ -4,8 +4,6 @@ import { twMerge } from 'tailwind-merge';
 import Banner from './assets/Banner.png';
 import Wikiredesign from './assets/wikiredesign.png';
 import { createClient } from '@supabase/supabase-js';
-import { Octokit } from 'octokit';
-import { GITHUB_TOKEN } from '$env/static/private';
 
 /**
  * Appends strings of classes. If non-truthy values are passed, they are ignored.
