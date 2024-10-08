@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
@@ -219,5 +219,5 @@
 	});
 </script>
 
-<!-- Main SVG Container -->
-<svg bind:this={svg} width="800" height="600"></svg>
+ Main SVG Container
+<svg bind:this={svg} width="800" height="600"></svg> -->
