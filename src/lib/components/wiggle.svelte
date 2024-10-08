@@ -6,7 +6,7 @@
 
 <div class=" my-5">
 	<svg
-		class={cn('text-grey-500 mx-auto', className)}
+		class={cn('mx-auto text-grey-500', className)}
 		xmlns="http://www.w3.org/2000/svg"
 		width="80"
 		height="16"

@@ -6,7 +6,7 @@ export const load: PageLoad = async ({ params, fetch, ...rest }) => {
 	return {
 		post: {
 			title: `Title for ${params.id} goes here`,
-			content: `Content for ${params.id} goes here`,
+			content: await res.text(),
 		},
 	};
 };

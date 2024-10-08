@@ -22,6 +22,10 @@
 	let toast = $state(0);
 
 	let mobileMenuOpen = $state(false);
+
+	// onkeypress(()=>{
+
+	// })
 </script>
 
 {#snippet items(mobile: boolean)}

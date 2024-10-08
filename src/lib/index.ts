@@ -23,3 +23,15 @@ export const ghCDNConfig = {
 	user: 'jafupy',
 	repo: 'site-cdn',
 };
+
+export const tw = {
+	prussianBlue: {
+		200: '#EAEFEB',
+		300: '#DCE1DE',
+		400: '#AEC1B8',
+		500: '#668988',
+		600: '#354D5D',
+		700: '#1E293B',
+		800: '#12151F',
+	},
+};

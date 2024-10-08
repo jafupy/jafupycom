@@ -3,7 +3,7 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import Shiki from '@shikijs/rehype';
 import RehypeSlug from 'rehype-slug';
-import { markdoc } from 'svelte-markdoc-preprocess';
+import { mdsvex } from 'mdsvex';
 
 // const config = {
 // 	preprocess: [vitePreprocess(), markdoc()],
@@ -16,13 +16,8 @@ const config = {
 	// for more information about preprocessors
 	preprocess: sequence([
 		vitePreprocess(),
-		markdoc({
-			extensions: ['.markdoc', '.mdoc'],
-			variables: {
-				jafu: {
-					age: new Date().getFullYear() - 2010,
-				},
-			},
+		mdsvex({
+			rehypePlugins: [RehypeSlug, Shiki],
 		}),
 		preprocessMeltUI(),
 	]),
@@ -32,6 +27,6 @@ const config = {
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
 		adapter: adapter(),
 	},
-	extensions: ['.svelte', '.mdoc', '.markdoc'],
+	extensions: ['.svelte', '.svx'],
 };
 export default config;

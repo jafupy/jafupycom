@@ -4,7 +4,7 @@
 
 <section class="not-prose mx-auto flex min-h-[85vh] flex-col items-center justify-center">
 	<ul
-		class="flex list-inside list-disc gap-4 rounded-full border border-prussian-blue px-4 py-1 text-sm accent-old-rose-500 marker:text-old-rose-500"
+		class="flex list-inside list-disc gap-4 rounded-full border border-prussian-blue px-4 py-1 text-sm accent-old-rose-500 transition-all marker:text-old-rose-500 hover:border-old-rose"
 	>
 		<li class="list-none">Web Dev</li>
 		<li>Guitarist</li>
@@ -16,10 +16,10 @@
 <section class="relative">
 	<p class="max-w-ch-sm">
 		Hello, I’m Jacob, more commonly known online as jafu.py. I'm a {new Date().getFullYear() - 2010}
-		years old Polish person raised in England. I write code, play classical/fingerstyle guitar. I taught
+		year old Pole person raised in England. I write code, play classical/fingerstyle guitar. I taught
 		myself python at 10, moving on to web dev. I use React and Svelte. Other than that, I play minecraft,
-		and other non FPS games.
-		<a href="/bio#games">More on games here</a>
+		on Stam's (<a class="underline-offset-2" href="https://www.youtube.com/@Stam1o">Stam1o</a>)
+		supported server.
 	</p>
 	<div
 		aria-hidden="true"

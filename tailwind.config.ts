@@ -60,6 +60,19 @@ const config = {
 			tw: colors,
 		},
 		extend: {
+			typography: {
+				DEFAULT: {
+					css: {
+						color: '#dce1de',
+						a: {
+							textDecoration: 'underline',
+							'&:hover': {
+								color: '#cb8b8c',
+							},
+						},
+					},
+				},
+			},
 			colors: {
 				'old-rose': {
 					DEFAULT: 'hsl(359deg, 38.1%, 67.1%)' /* #CB8B8C */,

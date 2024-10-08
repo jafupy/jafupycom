@@ -23,7 +23,7 @@
 	well.
 </p>
 
-<div class="grid w-full max-w-ch-xl gap-4 sm:grid-cols-2 md:grid-cols-3">
+<div class="not-prose grid w-full max-w-ch-xl gap-4 sm:grid-cols-2 md:grid-cols-3">
 	<Card>
 		<C.Header icon={Anvil} iconColor="text-prussian-blue-200">
 			<C.H.Title>Pandora's Box</C.H.Title>
@@ -78,7 +78,7 @@
 		</C.Header>
 		<C.Content>
 			<img
-				class="border-grey-100/20 rounded-md border"
+				class="rounded-md border border-grey-100/20"
 				src={wikiredesign}
 				alt="Mockup of Wikipedia Redesign"
 			/>
@@ -117,7 +117,7 @@
 			</C.H.Description>
 		</C.Header>
 		<C.Content>
-			<img class="border-grey-100/20 rounded-md border" src={assets.banner} alt="Banner for V6" />
+			<img class="rounded-md border border-grey-100/20" src={assets.banner} alt="Banner for V6" />
 			<p>
 				Version 6 of my branding. This includes a new logo, a new color scheme and a new social
 				media banner.
@@ -132,4 +132,27 @@
 			</a>
 		</C.Footer>
 	</Card>
+	<a href="/projects/gpt/">
+		<Card>
+			<C.Header icon={Anvil} iconColor="text-prussian-blue-200">
+				<C.H.Title>ChatGPT website redesign</C.H.Title>
+				<C.H.Description>
+					<ul class="flex flex-wrap gap-1">
+						<li>
+							<Tag icon={TerminalSquare}>Svelte</Tag>
+						</li>
+						<li>
+							<Tag icon={CalendarClock}>2024 / Sep</Tag>
+						</li>
+					</ul>
+				</C.H.Description>
+			</C.Header>
+			<C.Content>
+				<p>
+					A somewhat interactive preview of how the ChatGPT website would look if I were to design
+					in.
+				</p>
+			</C.Content>
+		</Card>
+	</a>
 </div>
