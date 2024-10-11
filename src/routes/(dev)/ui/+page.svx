@@ -1,7 +1,0 @@
-<script>
-    import Components from "./components.svelte"
-</script>
-# UI
-This is the UI I made for this website, shown off below. You're free to use any of the components as long as they have a little green tick in the top right corner.
-
-<Components />
