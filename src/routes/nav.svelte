@@ -33,7 +33,7 @@
 		class={cn('mx-auto flex-row items-center gap-4', mobile ? 'flex flex-col' : 'hidden sm:flex')}
 	>
 		<li data-selected={currentPath.startsWith('/bio')} class="group flex items-center">
-			<a onclick={() => (mobileMenuOpen = false)} href="/bio">
+			<a onclick={() => (mobileMenuOpen = false)} href="/#bio">
 				<User
 					strokeWidth={currentPath.startsWith('/bio') ? 2 : 1}
 					class="mr-2 inline h-4 w-4 text-grey-100/50 group-hover:text-grey-100/75 group-data-[selected=true]:text-old-rose"

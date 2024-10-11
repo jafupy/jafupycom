@@ -13,7 +13,7 @@
 
 <Nav />
 <main
-	class="prose-grey prose prose-invert mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center px-0 py-12"
+	class="prose-grey prose prose-invert mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center px-0 py-12"
 >
 	<slot></slot>
 </main>

@@ -24,10 +24,12 @@
 
 <h1 class="mb-2">Blog</h1>
 <p class="mt-2">Me rambling.</p>
-<div class="grid w-full max-w-ch-xl grid-cols-3 place-items-center gap-4">
+<div
+	class="grid w-full max-w-ch-xl grid-cols-[repeat(auto-fit,minmax(6rem,1fr))] place-items-center gap-4"
+>
 	{#each posts as post}
-		<a class="not-prose w-full" href="/blog/{post.slug}">
-			<Card class="hover:border-grey-100/20">
+		<a class="not-prose w-full w-full" href="/blog/{post.slug}">
+			<Card class="w-full max-w-none  hover:border-grey-100/20">
 				<C.Header icon={Link2}>
 					<C.H.Title>{post.title}</C.H.Title>
 					<C.H.Description>{post.date}</C.H.Description>

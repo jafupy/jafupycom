@@ -13,7 +13,7 @@
 	<h1 class="mt-4 text-7xl">I'm Jacob</h1>
 	<p>Also known as Jafu.py</p>
 </section>
-<section class="relative">
+<section id="bio" class="relative">
 	<p class="max-w-ch-sm">
 		Hello, I’m Jacob, more commonly known online as jafu.py. I'm a {new Date().getFullYear() - 2010}
 		year old Pole person raised in England. I write code, play classical/fingerstyle guitar. I taught
