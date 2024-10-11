@@ -3,7 +3,7 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import Shiki from '@shikijs/rehype';
 import RehypeSlug from 'rehype-slug';
-import { mdsvex } from 'mdsvex';
+// import { mdsvex } from 'mdsvex';
 
 // const config = {
 // 	preprocess: [vitePreprocess(), markdoc()],
@@ -16,9 +16,9 @@ const config = {
 	// for more information about preprocessors
 	preprocess: sequence([
 		vitePreprocess(),
-		mdsvex({
-			rehypePlugins: [RehypeSlug, Shiki],
-		}),
+		// mdsvex({
+		// 	rehypePlugins: [RehypeSlug, Shiki],
+		// }),
 		preprocessMeltUI(),
 	]),
 	kit: {
